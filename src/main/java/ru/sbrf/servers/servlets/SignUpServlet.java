@@ -14,7 +14,11 @@ public class SignUpServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html");
+
         PrintWriter pw = resp.getWriter();
+        pw.write("<html><body>");
         pw.write("<h1>This is Sign Up Page</h1>");
+        pw.write("</body></html>");
     }
 }
