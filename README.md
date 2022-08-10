@@ -8,5 +8,9 @@
 5. _`mvn -P tomcat tomcat7:redeply`_
 
 ***
-
 *_При использовании Apache Tomcat версия должна быть не ниже 10.х._
+***
+Быстрые ссылки:
+- [Корзина](http://localhost:8080/servletFirstHw/main?stage=cart)
+- [Каталог](http://localhost:8080/servletFirstHw/main?stage=catalog)
+***

@@ -5,10 +5,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import ru.sbrf.servers.models.Product;
 
 import java.io.IOException;
 
-@WebServlet(name = "FrontController", value = "/")
+@WebServlet(name = "FrontController", value = "/main")
 public class FrontControllerServlet extends HttpServlet {
 
     public static final String CART = "Cart";
@@ -16,14 +17,15 @@ public class FrontControllerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String stage = (String) req.getAttribute("stage");
-
-        if (stage.equalsIgnoreCase(CATALOG)) {
-            System.out.println(CATALOG);
+        final String stage = req.getParameter("stage");
+        if (stage != null) {
+            if (stage.equalsIgnoreCase(CATALOG)) {
+                req.setAttribute(CATALOG.toLowerCase(), Product.getCatalog());
+                req.getRequestDispatcher("jsp/catalog.jsp").forward(req, resp);
+            } else if (stage.equalsIgnoreCase(CART)) {
+                req.setAttribute(CART.toLowerCase(), Product.getCart());
+                req.getRequestDispatcher("jsp/cart.jsp").forward(req, resp);
+            }
         }
-        else if (stage.equalsIgnoreCase(CART)) {
-            System.out.println(CART);
-        }
-        super.doGet(req, resp);
     }
 }
