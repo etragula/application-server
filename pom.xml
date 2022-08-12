@@ -11,7 +11,6 @@
     <packaging>war</packaging>
 
     <properties>
-        <java.version>11</java.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
 
@@ -20,33 +19,40 @@
         <project.build.sourceEncoding>${encoding.type}</project.build.sourceEncoding>
         <project.repository.outputEncoding>${encoding.type}</project.repository.outputEncoding>
 
-        <failOnMissingWebxml>false</failOnMissingWebxml>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+
+        <lombok.version>1.18.22</lombok.version>
+        <tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
+        <jakarta.servlet-api.version>5.0.0</jakarta.servlet-api.version>
+        <jakarta.servlet.jsp.jstl.version>2.0.0</jakarta.servlet.jsp.jstl.version>
+        <jetty-jspc-maven-plugin.version>11.0.11</jetty-jspc-maven-plugin.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
-            <version>5.0.0</version>
+            <version>${jakarta.servlet-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.web</groupId>
             <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-            <version>2.0.0</version>
+            <version>${jakarta.servlet.jsp.jstl.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.22</version>
+            <version>${lombok.version}</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
+                <!-- https://www.eclipse.org/jetty/documentation/jetty-11/programming-guide/index.html#jetty-jspc-maven-plugin -->
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-jspc-maven-plugin</artifactId>
-                <version>11.0.11</version>
+                <version>${jetty-jspc-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>jspc</id>
@@ -68,7 +74,7 @@
                         <!-- https://mvnrepository.com/artifact/org.apache.tomcat.maven/tomcat7-maven-plugin -->
                         <groupId>org.apache.tomcat.maven</groupId>
                         <artifactId>tomcat7-maven-plugin</artifactId>
-                        <version>2.2</version>
+                        <version>${tomcat7-maven-plugin.version}</version>
                         <configuration>
                             <url>http://localhost:8080/manager/text</url>
                             <server>TomcatServer</server>
