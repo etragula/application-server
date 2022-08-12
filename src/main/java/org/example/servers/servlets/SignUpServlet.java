@@ -1,4 +1,4 @@
-package ru.sbrf.servers.servlets;
+package org.example.servers.servlets;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/signUp")
+@WebServlet(name = "SignUpServlet", value = "/signUp")
 public class SignUpServlet extends HttpServlet {
 
     @Override

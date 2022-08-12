@@ -7,7 +7,7 @@
 </head>
 <body>
 <table>
-    <caption>Каталог товаров(${catalog.size()})</caption>
+    <caption>Каталог (${catalog.size()} товаров)</caption>
     <tr>
         <th scope="col">Артикул</th>
         <th scope="col">Название</th>
