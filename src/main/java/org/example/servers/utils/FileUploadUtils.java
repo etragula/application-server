@@ -30,7 +30,7 @@ public class FileUploadUtils {
                 filePart.getSize() > 0;
     }
 
-    public static void uploadFile(Part filePart, String destination, PrintWriter writer) {
+    public static void saveFile(Part filePart, String destination, PrintWriter writer) {
         String fileName = filePart.getSubmittedFileName();
         try {
             Files.copy(filePart.getInputStream(), Paths.get(destination + File.separator + fileName));

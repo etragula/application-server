@@ -45,7 +45,7 @@ public class UploadTwoFilesServlet extends HttpServlet {
         } else if (!dirExists(destination)) {
             writer.println("Не удалось загрузить файлы. Указана несуществующая директория.<br/>");
         } else {
-            parts.forEach(filePart -> uploadFile(filePart, destination, writer));
+            parts.forEach(filePart -> saveFile(filePart, destination, writer));
         }
         writer.println(BACK_TO_UPLOAD_BUTTON);
         writer.close();
