@@ -13,8 +13,8 @@ import java.nio.file.Paths;
 public class FileSaveServiceImpl implements FileSaveService {
 
     @Override
-    public boolean dirExists(String destination) {
-        return Files.exists(Path.of(destination));
+    public boolean dirNotExists(String destination) {
+        return Files.notExists(Path.of(destination));
     }
 
     @Override

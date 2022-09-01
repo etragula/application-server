@@ -44,7 +44,7 @@ public class UploadTwoFilesServlet extends HttpServlet {
 
         if (parts.isEmpty()) {
             writer.println("Не были выбраны файлы для загрузки.<br/>");
-        } else if (!fileSaveService.dirExists(destination)) {
+        } else if (fileSaveService.dirNotExists(destination)) {
             writer.println("Не удалось загрузить файлы. Указана несуществующая директория.<br/>");
         } else {
             parts.forEach(part -> writer.println(fileSaveService.saveFile(part, destination)));

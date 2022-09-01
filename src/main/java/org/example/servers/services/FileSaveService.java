@@ -4,7 +4,7 @@ import jakarta.servlet.http.Part;
 
 public interface FileSaveService {
 
-    boolean dirExists(String destination);
+    boolean dirNotExists(String destination);
 
     boolean isFileUploaded(Part part);
 

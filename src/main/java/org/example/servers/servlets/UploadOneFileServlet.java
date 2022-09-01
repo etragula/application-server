@@ -40,7 +40,7 @@ public class UploadOneFileServlet extends HttpServlet {
 
         if (!fileSaveService.isFileUploaded(filePart)) {
             writer.println("Файл для загрузки не был выбран.<br/>");
-        } else if (!fileSaveService.dirExists(destination)) {
+        } else if (fileSaveService.dirNotExists(destination)) {
             writer.println("Не удалось загрузить файл. Указана несуществующая директория.<br/>");
         } else {
             writer.println(fileSaveService.saveFile(filePart, destination));
