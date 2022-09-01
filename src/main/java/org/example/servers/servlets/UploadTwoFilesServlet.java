@@ -7,14 +7,15 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
-import org.example.servers.utils.FileUploadUtils;
+import org.example.servers.services.FileSaveService;
+import org.example.servers.services.FileSaveServiceImpl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.example.servers.utils.FileUploadUtils.*;
+import static org.example.servers.enums.HtmlAttributes.BACK_TO_FILE_UPLOAD_BUTTON;
 
 @WebServlet(name = "UploadTwoFiles", urlPatterns = "/twoFilesUpload")
 @MultipartConfig(
@@ -34,20 +35,22 @@ public class UploadTwoFilesServlet extends HttpServlet {
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
 
+        FileSaveService fileSaveService = new FileSaveServiceImpl();
         String destination = req.getParameter("destination");
         PrintWriter writer = resp.getWriter();
         List<Part> parts = req.getParts().stream()
-                .filter(FileUploadUtils::isFileUploaded)
+                .filter(fileSaveService::isFileUploaded)
                 .collect(Collectors.toList());
 
         if (parts.isEmpty()) {
             writer.println("Не были выбраны файлы для загрузки.<br/>");
-        } else if (!dirExists(destination)) {
+        } else if (!fileSaveService.dirExists(destination)) {
             writer.println("Не удалось загрузить файлы. Указана несуществующая директория.<br/>");
         } else {
-            parts.forEach(filePart -> saveFile(filePart, destination, writer));
+            parts.forEach(part -> writer.println(fileSaveService.saveFile(part, destination)));
         }
-        writer.println(BACK_TO_UPLOAD_BUTTON);
+
+        writer.println(BACK_TO_FILE_UPLOAD_BUTTON.getValue());
         writer.close();
     }
 }

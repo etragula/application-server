@@ -7,11 +7,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
+import org.example.servers.services.FileSaveService;
+import org.example.servers.services.FileSaveServiceImpl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static org.example.servers.utils.FileUploadUtils.*;
+import static org.example.servers.enums.HtmlAttributes.BACK_TO_FILE_UPLOAD_BUTTON;
 
 @WebServlet(name = "UploadOneFile", urlPatterns = "/oneFileUpload")
 @MultipartConfig(
@@ -31,19 +33,20 @@ public class UploadOneFileServlet extends HttpServlet {
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
 
+        FileSaveService fileSaveService = new FileSaveServiceImpl();
         Part filePart = req.getPart("file");
         String destination = req.getParameter("destination");
         PrintWriter writer = resp.getWriter();
 
-        if (!isFileUploaded(filePart)) {
+        if (!fileSaveService.isFileUploaded(filePart)) {
             writer.println("Файл для загрузки не был выбран.<br/>");
-        } else if (!dirExists(destination)) {
+        } else if (!fileSaveService.dirExists(destination)) {
             writer.println("Не удалось загрузить файл. Указана несуществующая директория.<br/>");
         } else {
-            saveFile(filePart, destination, writer);
+            writer.println(fileSaveService.saveFile(filePart, destination));
         }
 
-        writer.println(BACK_TO_UPLOAD_BUTTON);
+        writer.println(BACK_TO_FILE_UPLOAD_BUTTON.getValue());
         writer.close();
     }
 }
