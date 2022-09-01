@@ -17,15 +17,15 @@ public class FrontControllerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        final String stage = req.getParameter("stage");
-        if (stage != null) {
-            if (CATALOG.equalsIgnoreCase(stage)) {
-                req.setAttribute(CATALOG.toLowerCase(), Product.getCatalog());
-                req.getRequestDispatcher("jsp/catalog.jsp").forward(req, resp);
-            } else if (CART.equalsIgnoreCase(stage)) {
-                req.setAttribute(CART.toLowerCase(), Product.getCart());
-                req.getRequestDispatcher("jsp/cart.jsp").forward(req, resp);
-            }
+        String stage = req.getParameter("stage");
+        if (CATALOG.equalsIgnoreCase(stage)) {
+            req.setAttribute(CATALOG.toLowerCase(), Product.getCatalog());
+            req.getRequestDispatcher("jsp/catalog.jsp").forward(req, resp);
+        } else if (CART.equalsIgnoreCase(stage)) {
+            req.setAttribute(CART.toLowerCase(), Product.getCart());
+            req.getRequestDispatcher("jsp/cart.jsp").forward(req, resp);
+        } else {
+            req.getRequestDispatcher("jsp/mainPage.jsp").forward(req, resp);
         }
     }
 }

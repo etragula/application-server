@@ -21,5 +21,8 @@
         </tr>
     </c:forEach>
 </table>
+<form action="main" method="get">
+    <input type="submit" value="На главную">
+</form>
 </body>
 </html>
