@@ -12,6 +12,7 @@
 
 
 ### Быстрые ссылки:
-- [Корзина](http://localhost:8080/servletFirstHw/main?stage=cart)
-- [Каталог](http://localhost:8080/servletFirstHw/main?stage=catalog)
+- [Корзина](http://localhost:8080/application-server/main?stage=cart)
+- [Каталог](http://localhost:8080/application-server/main?stage=catalog)
+- [Вход](http://localhost:8080/application-server/signIn)
 ***
