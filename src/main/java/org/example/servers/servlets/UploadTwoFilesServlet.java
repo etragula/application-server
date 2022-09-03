@@ -39,7 +39,7 @@ public class UploadTwoFilesServlet extends HttpServlet {
         String destination = req.getParameter("destination");
         PrintWriter writer = resp.getWriter();
         List<Part> parts = req.getParts().stream()
-                .filter(fileSaveService::isFileUploaded)
+                .filter(fileSaveService::fileIsAbsent)
                 .collect(Collectors.toList());
 
         if (parts.isEmpty()) {

@@ -6,7 +6,7 @@ public interface FileSaveService {
 
     boolean dirNotExists(String destination);
 
-    boolean isFileUploaded(Part part);
+    boolean fileIsAbsent(Part part);
 
     String saveFile(Part part, String destination);
 }

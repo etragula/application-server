@@ -18,10 +18,10 @@ public class FileSaveServiceImpl implements FileSaveService {
     }
 
     @Override
-    public boolean isFileUploaded(Part part) {
+    public boolean fileIsAbsent(Part part) {
         long fileSize = part.getSize();
         String fileName = part.getSubmittedFileName();
-        return fileName != null && !fileName.isBlank() && fileSize > 0;
+        return fileName == null || fileName.isBlank() || fileSize < 0;
     }
 
     @Override

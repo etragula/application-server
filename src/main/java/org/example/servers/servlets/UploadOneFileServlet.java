@@ -38,7 +38,7 @@ public class UploadOneFileServlet extends HttpServlet {
         String destination = req.getParameter("destination");
         PrintWriter writer = resp.getWriter();
 
-        if (!fileSaveService.isFileUploaded(filePart)) {
+        if (fileSaveService.fileIsAbsent(filePart)) {
             writer.println("Файл для загрузки не был выбран.<br/>");
         } else if (fileSaveService.dirNotExists(destination)) {
             writer.println("Не удалось загрузить файл. Указана несуществующая директория.<br/>");
