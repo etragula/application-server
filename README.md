@@ -12,7 +12,8 @@
 
 
 ### Быстрые ссылки:
-- [Корзина](http://localhost:8080/application-server/main?stage=cart)
-- [Каталог](http://localhost:8080/application-server/main?stage=catalog)
 - [Вход](http://localhost:8080/application-server/signIn)
-***
+- [Главная](http://localhost:8080/application-server/main)
+- [Корзина](http://localhost:8080/application-server/main?stage=cart)
+- [Загрузить файл](http://localhost:8080/application-server/oneFileUpload)
+- [Загрузить файлы](http://localhost:8080/application-server/twoFilesUpload)
