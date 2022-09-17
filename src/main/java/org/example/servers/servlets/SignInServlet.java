@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(name = "SignInServlet", value = "/signIn")
 public class SignInServlet extends HttpServlet {
@@ -23,15 +22,16 @@ public class SignInServlet extends HttpServlet {
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
 
-        PrintWriter writer = resp.getWriter();
-        String eMail = req.getParameter("eMail");
-        String password = req.getParameter("password");
+        var eMail = req.getParameter("eMail");
+        var password = req.getParameter("password");
 
         if (eMail.isBlank() || password.isBlank()) {
             resp.addCookie(new Cookie("code", "400"));
             resp.sendError(400);
         } else {
+            var writer = resp.getWriter();
             writer.printf("Добро пожаловать, %s! <br/>", eMail);
+            writer.close();
         }
     }
 }

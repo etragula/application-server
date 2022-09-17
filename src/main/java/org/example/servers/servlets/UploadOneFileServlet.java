@@ -6,14 +6,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
 import org.example.servers.services.FileSaveService;
-import org.example.servers.services.FileSaveServiceImpl;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import static org.example.servers.enums.HtmlAttributes.BACK_TO_FILE_UPLOAD_BUTTON;
+import static org.example.servers.services.FileSaveService.BACK_TO_FILE_UPLOAD_BUTTON;
 
 @WebServlet(name = "UploadOneFile", urlPatterns = "/oneFileUpload")
 @MultipartConfig(
@@ -33,10 +30,10 @@ public class UploadOneFileServlet extends HttpServlet {
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
 
-        FileSaveService fileSaveService = new FileSaveServiceImpl();
-        Part filePart = req.getPart("file");
-        String destination = req.getParameter("destination");
-        PrintWriter writer = resp.getWriter();
+        var fileSaveService = new FileSaveService();
+        var filePart = req.getPart("file");
+        var destination = req.getParameter("destination");
+        var writer = resp.getWriter();
 
         if (fileSaveService.fileIsAbsent(filePart)) {
             writer.println("Файл для загрузки не был выбран.<br/>");
@@ -46,7 +43,7 @@ public class UploadOneFileServlet extends HttpServlet {
             writer.println(fileSaveService.saveFile(filePart, destination));
         }
 
-        writer.println(BACK_TO_FILE_UPLOAD_BUTTON.getValue());
+        writer.println(BACK_TO_FILE_UPLOAD_BUTTON);
         writer.close();
     }
 }

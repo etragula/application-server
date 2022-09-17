@@ -29,5 +29,8 @@
     <input type="submit" value="Загрузить файлы">
 </form>
 </span>
+<form align="left" action="signIn" method="get">
+    <input type="submit" value="Войти">
+</form>
 </body>
 </html>

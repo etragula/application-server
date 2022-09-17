@@ -14,5 +14,8 @@
     <input type="password" id="password" name="password" placeholder="Ваш пароль"> <br/>
     <input type="submit" value="Войти">
 </form>
+<form action="main" method="get">
+    <input type="submit" value="На главную">
+</form>
 </body>
 </html>
