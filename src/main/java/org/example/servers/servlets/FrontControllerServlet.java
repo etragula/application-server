@@ -17,7 +17,7 @@ public class FrontControllerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String stage = req.getParameter("stage");
+        var stage = req.getParameter("stage");
         if (CATALOG.equalsIgnoreCase(stage)) {
             req.setAttribute(CATALOG.toLowerCase(), Product.getCatalog());
             req.getRequestDispatcher("jsp/catalog.jsp").forward(req, resp);

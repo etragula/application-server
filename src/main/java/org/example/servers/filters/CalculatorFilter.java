@@ -19,8 +19,7 @@ public class CalculatorFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         if (POST.equals(req.getMethod())) {
-            String number = req.getParameter(NUMBER);
-            String errorMessage = getErrorMessage(number);
+            var errorMessage = getErrorMessage(req.getParameter(NUMBER));
             if (errorMessage.isBlank()) {
                 super.doFilter(req, res, chain);
             }
@@ -32,9 +31,13 @@ public class CalculatorFilter extends HttpFilter {
     }
 
     private String getErrorMessage(String number) {
-        if (number == null || number.isBlank()) return "Поле не было заполнено!";
-        else if (isNotNumeric(number)) return "Введенное значение не является числом!";
-        else return "";
+        if (number == null || number.isBlank()) {
+            return "Поле не было заполнено!";
+        } else if (isNotNumeric(number)) {
+            return "Введенное значение не является числом!";
+        } else {
+            return "";
+        }
     }
 
     private boolean isNotNumeric(String number) {

@@ -6,16 +6,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
 import org.example.servers.services.FileSaveService;
-import org.example.servers.services.FileSaveServiceImpl;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.example.servers.enums.HtmlAttributes.BACK_TO_FILE_UPLOAD_BUTTON;
+import static org.example.servers.services.FileSaveService.BACK_TO_FILE_UPLOAD_BUTTON;
 
 @WebServlet(name = "UploadTwoFiles", urlPatterns = "/twoFilesUpload")
 @MultipartConfig(
@@ -35,10 +31,10 @@ public class UploadTwoFilesServlet extends HttpServlet {
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
 
-        FileSaveService fileSaveService = new FileSaveServiceImpl();
-        String destination = req.getParameter("destination");
-        PrintWriter writer = resp.getWriter();
-        List<Part> parts = req.getParts().stream()
+        var fileSaveService = new FileSaveService();
+        var destination = req.getParameter("destination");
+        var writer = resp.getWriter();
+        var parts = req.getParts().stream()
                 .filter(fileSaveService::fileIsAbsent)
                 .collect(Collectors.toList());
 
@@ -50,7 +46,7 @@ public class UploadTwoFilesServlet extends HttpServlet {
             parts.forEach(part -> writer.println(fileSaveService.saveFile(part, destination)));
         }
 
-        writer.println(BACK_TO_FILE_UPLOAD_BUTTON.getValue());
+        writer.println(BACK_TO_FILE_UPLOAD_BUTTON);
         writer.close();
     }
 }
