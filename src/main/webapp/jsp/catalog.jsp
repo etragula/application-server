@@ -21,7 +21,7 @@
         </tr>
     </c:forEach>
 </table>
-<form action="main" method="get">
+<form action="<c:url value="/"/>" method="get">
     <input type="submit" value="На главную">
 </form>
 </body>

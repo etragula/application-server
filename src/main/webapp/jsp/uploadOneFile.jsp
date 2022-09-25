@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.io.File" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
@@ -14,7 +15,7 @@
     <input type="text" value="<%=System.getProperty("user.home") + File.separator%>tmp" name="destination"/> <br/>
     <input type="submit" value="Загрузить файл">
 </form>
-<form action="main" method="get">
+<form action="<c:url value="/"/>" method="get">
     <input type="submit" value="На главную">
 </form>
 </body>

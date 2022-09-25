@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="ru">
@@ -14,7 +15,7 @@
     <input type="password" id="password" name="password" placeholder="Ваш пароль"> <br/>
     <input type="submit" value="Войти">
 </form>
-<form action="main" method="get">
+<form action="<c:url value="/"/>" method="get">
     <input type="submit" value="На главную">
 </form>
 </body>
