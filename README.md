@@ -19,6 +19,3 @@
 - [Загрузить файл](http://localhost:8080/application-server/oneFileUpload)
 - [Загрузить файлы](http://localhost:8080/application-server/twoFilesUpload)
 - [Калькулятор](http://localhost:8080/application-server/calculator)
-
-http://localhost:8080/application_server/
-http://localhost:8080/application-server/
