@@ -9,7 +9,7 @@ import org.example.servers.models.Product;
 
 import java.io.IOException;
 
-@WebServlet(name = "FrontController", value = "/main")
+@WebServlet(name = "FrontController", value = "/")
 public class FrontControllerServlet extends HttpServlet {
 
     public static final String CART = "Cart";

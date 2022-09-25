@@ -8,28 +8,29 @@
 <body>
 <h3>Главная страница</h3>
 <span style="float:left;">
-<form align="left" action="main" method="get">
-    <input type="hidden" name="stage" value="Cart"/>
-    <input name="submit" type="submit" value="Корзина">
-</form>
+    <form align="left" action="<c:url value="/"/>" method="get">
+        <input type="hidden" name="stage" value="Cart"/>
+        <input name="submit" type="submit" value="Корзина">
+    </form>
+    <form align="left" action="<c:url value="/"/>" method="get">
+        <input type="hidden" name="stage" value="Catalog"/>
+        <input name="submit" type="submit" value="Каталог">
+    </form>
 </span>
 <span style="float:left;">
-<form align="left" action="main" method="get">
-    <input type="hidden" name="stage" value="Catalog"/>
-    <input name="submit" type="submit" value="Каталог">
-</form>
+    <form align="left" action="oneFileUpload" method="get">
+        <input type="submit" value="Загрузить файл">
+    </form>
+    <form align="left" action="twoFilesUpload" method="get">
+        <input type="submit" value="Загрузить файлы">
+    </form>
 </span>
 <span style="float:left;">
-<form align="left" action="oneFileUpload" method="get">
-    <input type="submit" value="Загрузить файл">
-</form>
+    <form align="left" action="calculator" method="get">
+        <input type="submit" value="Калькулятор">
+    </form>
 </span>
-<span style="float:left;">
-<form align="left" action="twoFilesUpload" method="get">
-    <input type="submit" value="Загрузить файлы">
-</form>
-</span>
-<form align="left" action="signIn" method="get">
+<form action="signIn" method="get">
     <input type="submit" value="Войти">
 </form>
 </body>
