@@ -10,27 +10,27 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
-    private String id;
+    private Integer id;
     private String name;
-    private Double price;
+    private String desc;
 
     public static List<Product> getCatalog() {
         return List.of(
-                new Product("257462345", "Смартфон", 15660D),
-                new Product("226253322", "Холодильник", 74000D),
-                new Product("368354324", "Стиральная машинка", 500D),
-                new Product("275235456", "Электрическая зубная щетка", 25000D),
-                new Product("438354624", "Ноутбук", 133500D),
-                new Product("825265376", "Микроволновка", 1260D),
-                new Product("755532724", "Утюг", 5450D)
+                new Product(257462345, "Смартфон", "Смартфон"),
+                new Product(226253322, "Холодильник", "Холодильник"),
+                new Product(368354324, "Стиральная машинка", "Стиральная машинка"),
+                new Product(275235456, "Электрическая зубная щетка", "Электрическая зубная щетка"),
+                new Product(438354624, "Ноутбук", "Ноутбук"),
+                new Product(825265376, "Микроволновка", "Микроволновка"),
+                new Product(755532724, "Утюг", "Утюг")
         );
     }
 
     public static List<Product> getCart() {
         return List.of(
-                new Product("368354324", "Стиральная машинка", 500D),
-                new Product("275235456", "Электрическая зубная щетка", 25000D),
-                new Product("755532724", "Утюг", 5450D)
+                new Product(368354324, "Стиральная машинка", "Стиральная машинка"),
+                new Product(275235456, "Электрическая зубная щетка", "Электрическая зубная щетка"),
+                new Product(755532724, "Утюг", "Утюг")
         );
     }
 }

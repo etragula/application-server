@@ -25,7 +25,7 @@ public class FrontControllerServlet extends HttpServlet {
             req.setAttribute(CART.toLowerCase(), Product.getCart());
             req.getRequestDispatcher("jsp/cart.jsp").forward(req, resp);
         } else {
-            req.getRequestDispatcher("jsp/mainPage.jsp").forward(req, resp);
+            req.getRequestDispatcher("jsp/main.jsp").forward(req, resp);
         }
     }
 }

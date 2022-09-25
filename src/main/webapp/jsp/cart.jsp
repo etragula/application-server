@@ -11,13 +11,13 @@
     <tr>
         <th scope="col">Артикул</th>
         <th scope="col">Название</th>
-        <th scope="col">Цена, руб</th>
+        <th scope="col">Описание</th>
     </tr>
     <c:forEach items="${cart}" var="product">
         <tr>
             <td>${product.id}</td>
             <td>${product.name}</td>
-            <td>${product.price}</td>
+            <td>${product.desc}</td>
         </tr>
     </c:forEach>
 </table>
