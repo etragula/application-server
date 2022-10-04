@@ -11,7 +11,6 @@ import java.io.IOException;
 
 @WebFilter(value = "/calculator")
 public class CalculatorFilter extends HttpFilter {
-
     private static final String POST = "POST";
     private static final String ERROR = "error";
     private static final String NUMBER = "Number";

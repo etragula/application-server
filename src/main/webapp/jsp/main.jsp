@@ -16,6 +16,9 @@
         <input type="hidden" name="stage" value="Catalog"/>
         <input name="submit" type="submit" value="Каталог">
     </form>
+    <form align="left" action="<c:url value="products"/>" method="get">
+        <input name="submit" type="submit" value="Товары">
+    </form>
 </span>
 <span style="float:left;">
     <form align="left" action="oneFileUpload" method="get">
